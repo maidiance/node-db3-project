@@ -28,6 +28,8 @@ const validateScheme = (req, res, next) => {
   const name = req.body.scheme_name;
   if(!name || name == null || typeof(name) != 'string') {
     res.status(400).json({message: 'invalid scheme_name'});
+  } else {
+    next();
   }
 }
 
@@ -41,7 +43,14 @@ const validateScheme = (req, res, next) => {
   }
 */
 const validateStep = (req, res, next) => {
-
+  const instructions = req.body.instructions;
+  const steps = req.body.step_number;
+  if(!instructions || instructions == null || typeof(instructions) != 'string'
+   || typeof(steps) != 'number' || steps < 1) {
+     res.status(400).json({message: 'invalid step'});
+   } else {
+     next();
+   }
 }
 
 module.exports = {
