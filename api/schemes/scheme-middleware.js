@@ -8,7 +8,7 @@ const db = require('../../data/db-config');
   }
 */
 const checkSchemeId = async (req, res, next) => {
-  const scheme = await db('schemes').where('id', req.params.id).first();
+  const scheme = await db('schemes').where('scheme_id', req.params.scheme_id).first();
   if (scheme) {
     next();
   } else {
