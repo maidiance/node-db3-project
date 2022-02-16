@@ -97,7 +97,7 @@ async function findById(scheme_id) { // EXERCISE B
       .where('sc.scheme_id', scheme_id)
       .orderBy('st.step_number', 'ASC');
 
-      if(result.length <= 1) {
+      if(result.length < 1) {
         return null;
       }
 
