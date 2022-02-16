@@ -142,6 +142,22 @@ function findSteps(scheme_id) { // EXERCISE C
         }
       ]
   */
+ /*
+      SELECT
+          sc.scheme_name,
+          st.*
+      FROM steps as st
+      LEFT JOIN schemes as sc
+          ON sc.scheme_id = st.scheme_id
+      WHERE sc.scheme_id = 2
+      ORDER BY st.step_number ASC;
+ */
+    
+  return db('steps as st')
+    .leftJoin('schemes as sc', 'sc.scheme_id', 'st.scheme_id')
+    .select('st.step_id', 'st.step_number', 'instructions', 'sc.scheme_name')
+    .where('sc.scheme_id', scheme_id)
+    .orderBy('st.step_number', 'ASC')
 }
 
 function add(scheme) { // EXERCISE D
