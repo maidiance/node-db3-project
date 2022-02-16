@@ -12,7 +12,7 @@ const checkSchemeId = async (req, res, next) => {
   if (scheme) {
     next();
   } else {
-    res.status(404).json({message: 'scheme with scheme_id <actual id> not found'});
+    res.status(404).json({message: `scheme with scheme_id ${req.params.scheme_id} not found`});
   }
 }
 
