@@ -177,8 +177,12 @@ function addStep(scheme_id, step) { // EXERCISE E
     and resolves to _all the steps_ belonging to the given `scheme_id`,
     including the newly created one.
   */
+ const toInsert = {
+   scheme_id: scheme_id,
+   ...step
+ }
   return db('steps')
-    .insert(step)
+    .insert(toInsert)
     .then(() => {
       return findSteps(scheme_id);
     })
